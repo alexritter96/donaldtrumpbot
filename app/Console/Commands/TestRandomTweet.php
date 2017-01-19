@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Tweet; 
-use Abraham\TwitterOAuth\TwitterOAuth;
 
 
 class TestRandomTweet extends Command
@@ -42,22 +41,5 @@ class TestRandomTweet extends Command
     {
         $tweet = Tweet::inRandomOrder()->get()->first();
         echo var_export(json_decode($tweet->tweet)->text);
-        // $tweets = Tweet::orderBy('created_at', 'asc')->limit(1)->get();
-        // $this->info($tweets->first()->tweet);
-    
-
-        // $tweet = new Tweet; 
-        // $tweet->tweet = 'hello';
-        // $tweet->save();  
-        // $tweet = Tweet::find(16);
-        // // $tweet->delete();
-        // Tweet::getQuery()->delete();
-        
-
-
-
-        // $tweets = Tweet::withTrashed()->where('tweet', 'foo')->get();
-        // $tweets = Tweet::orderBy('created_at', 'asc')->limit(1)->get();
-        // $this->info($tweets->first()->tweet);
      }
 };
