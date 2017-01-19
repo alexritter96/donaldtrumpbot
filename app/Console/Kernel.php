@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\TestTweet::class,
-        Commands\TestRandomTweet::class 
+        Commands\TestRandomTweet::class,
+        Commands\RunBot::class,
     ];
 
     /**
