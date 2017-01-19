@@ -56,7 +56,7 @@ class RunBot extends Command
             $tweet = json_decode($tweet->tweet)->text;
             echo $tweet;
 
-            $client->getChannelById('C0308F8TS')->then(function (\Slack\Channel $channel) use ($client,) {
+            $client->getChannelById('C0308F8TS')->then(function (\Slack\Channel $channel) use ($client, $tweet) {
                  $message = $client->getMessageBuilder()
                     ->setText($tweet)
                     ->setChannel($channel)
