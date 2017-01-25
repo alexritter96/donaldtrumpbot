@@ -36,11 +36,17 @@ return [
     ],
 
     'twitter' => [
-        'client_id' => 'YJ3mddpo40YhkctIi6r5bxAE1',
-        'client_secret' => 'wdVBMFxdOKJJphFqI9n7DrLgRWsqImL9DCiN5cfN6wfDSrleT7',
+        'client_id' => env('TWITTER_CLIENT_ID'),
+        'client_secret' => env('TWITTER_CLIENT_SECRET'),
         'redirect' => 'http://your-callback-url',
-        'access_token' => '821799234269802498-FLo8lMZ79DbVnbAzwH5u7x03XSq84fE',
-        'access_token_secret' => 'EojfEfEGgOZiX9YuVFhdSCXzy4hfZVvqb1OM2mzdEjn4N',
+        'access_token' => env('TWITTER_ACCESS_TOKEN'),
+        'access_token_secret' => env('TWITTER_ACCESS_TOKEN_SECRET'),
+    ],
+
+    'slack' => [
+        'client_token' => env('SLACK_CLIENT_TOKEN'),
+        'client_channel_id' => env('SLACK_CLIENT_CHANNEL_ID'),
+
     ],
 
 ];
