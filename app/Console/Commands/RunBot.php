@@ -36,7 +36,7 @@ class RunBot extends Command
     {
         $loop = React\EventLoop\Factory::create();
         $client = new Slack\RealTimeClient($loop);
-        $client->setToken('');
+        $client->setToken(config('services.slack.client_token'));
         // C0308F8TS
         $client->on('message', function ($data) use ($client) {
             echo "Someone typed a message: ".$data['text']."\n";
@@ -46,11 +46,8 @@ class RunBot extends Command
             $tweet = json_decode($tweet->tweet)->text;
             echo $tweet;
 
-
-            $client->getChannelById('')->then(function (\Slack\Channel $channel) use ($client, $tweet) {
-            $client->getChannelById('')->then(function (\Slack\Channel $channel) use ($client, $tweet) {
-
-                 $message = $client->getMessageBuilder()
+            $client->getChannelById(config('services.slack.client_channel_id'))->then(function (\Slack\Channel $channel) use ($client, $tweet) {
+                $message = $client->getMessageBuilder()
                     ->setText($tweet)
                     ->setChannel($channel)
                     ->create();
@@ -62,7 +59,7 @@ class RunBot extends Command
         });
         $client->connect()->then(function () {
             echo "Connected!\n";
-            $client->getChannelById('')->then(function (\Slack\Channel $channel) use ($client) {
+            $client->getChannelById(config('services.slack.client_channel_id'))->then(function (\Slack\Channel $channel) use ($client) {
                 $client->send($tweet, $channel);
             });
         });
